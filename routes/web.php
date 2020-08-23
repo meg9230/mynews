@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::groupe(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin'], function(){
     Route::get('news/create', 'Admin\NewsController@add');
 });
 
@@ -23,7 +23,7 @@ Route::groupe(['prefix' => 'admin'], function(){
 Route::get('XXX', 'AAAController@bbb');
 
 // 問題４
-Route::groupe(['prefix' => 'admin'], function(){
-    Route::get('profile/create', 'ProfileController@create');
-    Route::get('profile/edit', 'ProfileController@edit');
+Route::group(['prefix' => 'admin'], function(){
+    Route::get('profile/create', 'Admin\ProfileController@create');
+    Route::get('profile/edit', 'Admin\ProfileController@edit');
 });
