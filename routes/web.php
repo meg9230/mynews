@@ -15,15 +15,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// 下記３行は一番したのコードと内容が重複しているので整理したい
 Route::group(['prefix' => 'admin'], function(){
     Route::get('news/create', 'Admin\NewsController@add');
 });
 
-// 問題３
 Route::get('XXX', 'AAAController@bbb');
 
-// 問題４
 Route::group(['prefix' => 'admin'], function(){
-    Route::get('profile/create', 'Admin\ProfileController@add');
-    Route::get('profile/edit', 'Admin\ProfileController@edit');
+    Route::get('profile/create', 'Admin\ProfileController@add')->middleware('auth');
+    Route::get('profile/edit', 'Admin\ProfileController@edit')->middleware('auth');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// 下記３行は上記のグループ化されたルーティングにまとめたい
+Route::group(['prefix' => 'admin'], function(){
+    Route::get('news/create', 'Admin\NewsController@add')->middleware('auth');
 });
