@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Profile;
+
 // プロフィールページに関するメソッド
 class ProfileController extends Controller
 {
@@ -14,6 +16,13 @@ class ProfileController extends Controller
     }
     // プロフィールを作成する
     public function create(){
+    // public function create(Request $request){
+        
+        // $this->validate($request, Profile::$rules);
+        
+        // $profile = new Profile;
+        // $form = $request->all();
+        
         return redirect('admin/profile/create');
     }
     // プロフィール編集画面を表示
