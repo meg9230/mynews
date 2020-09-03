@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('news/create', 'Admin\NewsController@add');
     Route::post('news/create', 'Admin\NewsController@create');
+    Route::get('news', 'Admin\NewsController@index');
 });
 
 
@@ -31,4 +32,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 
