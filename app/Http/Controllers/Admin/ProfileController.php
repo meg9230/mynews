@@ -28,14 +28,21 @@ class ProfileController extends Controller
         
         return redirect('admin/profile/create');
     }
+    
     // プロフィール編集画面を表示
-    public function edit(){
-        return view('admin.profile.edit');
+    public function edit(Request $request){
+        
+        $profile = Profile::find($request->id);
+        if (empty($profile)) {
+            abort(404);
+        }
+        return view('admin.profile.edit', ['profile_form' => $profile]);
     }
+    
     // プロフィールを更新する
     public function update(Request $request){
-        $this->validate($request, Profiles::$rules);
-        $profile = Profiles::find($request->id);
+        $this->validate($request, Profile::$rules);
+        $profile = Profile::find($request->id);
         $profile_form = $request->all();
         
         unset($profile_form['_token']);
