@@ -38,8 +38,7 @@ class NewsController extends Controller
         unset($form['image']);
         
         // データベースに保存する
-        $news->fill($form);
-        $news->save();
+        $news->fill($form)->save();
         
         
         return redirect('admin/news/create');
@@ -52,6 +51,46 @@ class NewsController extends Controller
         } else {
             $posts = News::all();
         }
-        return view('admin.news.index', ['posts' => '$posts', 'cond_title' => '$cond_title']);
+        return view('admin.news.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+    }
+    
+    public function edit(Request $request) {
+        // News Modelからデータ取得
+        $news = News::find($request->id);
+        if (empty($news)) {
+            abort(404);
+        }
+        return view('admin.news.edit', ['news_form' => $news]);
+    }
+    
+    public function update(Request $request) {
+        // Validation
+        $this->validate($request, News::$rules);
+        // News Modelからデータ取得
+        $news = News::find($request->id);
+        // 送信フォームデータの格納
+        $news_form = $request->all();
+        
+        if(isset($news_form['image'])) {
+            $path = $request->file('image')->store('public/image');
+            $news->image_path = basename($path);
+            unset($news_form['image']);
+        } elseif(isset($request->remove)) {
+            $news->image_path = null;
+            unset($news_form['remove']);
+        }
+        
+        unset($news_form['_token']);
+        // 該当データの上書き保存
+        $news->fill($news_form)->save();
+        
+        return redirect('admin/news/');
+    }
+    
+    public function delete(Request $request) {
+        
+        $news = News::find($request->id);
+        $news->delete();
+        return redirect('admin/news/');
     }
 }
