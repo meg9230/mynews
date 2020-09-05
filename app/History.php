@@ -15,7 +15,7 @@ class History extends Model
         
         );
     
-    public function histories() {
-        return $this->hasMany('App\History');
+    public function news() {
+        return $this->belongsTo('App\News');
     }
 }
