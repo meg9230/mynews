@@ -52,9 +52,9 @@ class ProfileController extends Controller
         
         $record = new Record;
         $record->profile_id = $profile->id;
-        $record->edited_at = Carbon::now();
+        $record->edited_at = Carbon::now('Asia/Tokyo');
         $record->save();
         
-        return redirect('admin/profile/edit');
+        return redirect('/home');
     }
 }
