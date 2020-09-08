@@ -1,0 +1,40 @@
+body {
+    color: #000;
+}
+
+.header {
+    .logo {
+        width: 120px;
+        height: 82px;
+    }
+}
+
+table {
+    width: 100%;
+}
+table th {
+    padding: 5px 20px;
+    width: 20%;
+}
+
+table td {
+    padding: 5px 20px;
+    width: 80%;
+}
+th, td {
+    border:solid 1px #aaaaaa;
+}
+
+.posts {
+    .post {
+        .name,
+        .gender,
+        .hobby {
+            font-size: 30px;
+            font-wight: bold;
+        }
+        .intro{
+            font-size: 0.8em;
+        }
+    }
+}

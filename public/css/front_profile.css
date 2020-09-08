@@ -1,0 +1,32 @@
+body {
+  color: #000;
+}
+
+.header .logo {
+  width: 120px;
+  height: 82px;
+}
+
+table {
+  width: 100%;
+}
+
+table th {
+  padding: 10px 20px;
+  width: 30%;
+}
+
+table td {
+  padding: 10px 20px;
+  width: 70%;
+}
+
+th,
+td {
+  border: solid 1px #aaaaaa;
+}
+
+h2 {
+  font-size: 15px;
+}
+

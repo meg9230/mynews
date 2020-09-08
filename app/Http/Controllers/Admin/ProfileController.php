@@ -55,6 +55,6 @@ class ProfileController extends Controller
         $record->edited_at = Carbon::now('Asia/Tokyo');
         $record->save();
         
-        return redirect('/home');
+        return redirect()->back();
     }
 }
