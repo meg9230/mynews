@@ -4,6 +4,7 @@
     <div class="container">
         <div class="logo header"></div>
         <hr color="#c0c0c0">
+        <h1>Herokuへのデプロイ</h1>
         @if(!is_null($headline))
             <div class="row">
                 <div class="headline col-md-10 mx-auto">
